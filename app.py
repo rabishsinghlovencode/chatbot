@@ -59,7 +59,7 @@ def get_convesrational_chain(vectorstore):
 def handle_userinput(user_question):
   response = st.session_state.convesrational_chain({"question": user_question})
   st.session_state.chat_history = response['chat_history']
-
+  
   for i, message in enumerate(st.session_state.chat_history):
     if i % 2 == 0 :
       st.write(':man_in_tuxedo:', message.content)
@@ -88,10 +88,9 @@ def main():
         st.session_state.chat_history = None
 
 
-    user_input=st.text_input("Upload files, Hit Submit button, then ask questions.:blue[- Venkat Reddy]:sunglasses:")
+    user_input=st.text_input("Upload files, Hit Submit button, then ask questions.:blue[- Rabish Demo ChatBoat]:sunglasses:", key="input_field")
     if user_input:
-      handle_userinput(user_input)
-
+      handle_userinput(user_input)      
 
     with st.sidebar:
         pdf_docs=st.file_uploader("Upload your documents here" , accept_multiple_files=True)
